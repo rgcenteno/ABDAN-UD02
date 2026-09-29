@@ -1,0 +1,1759 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Parámetros creación bucket</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuracion-inicial-de-un-bucket-amazon-s3-fundamentos-y-buenas-practicas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Parámetros creación bucket" class="md-header__button md-logo" aria-label="Parámetros creación bucket" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Parámetros creación bucket
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Parámetros
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Cambiar a modo light"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo light" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Parámetros creación bucket" class="md-nav__button md-logo" aria-label="Parámetros creación bucket" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Parámetros creación bucket
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parámetros
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parámetros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-tipo-de-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Tipo de Bucket
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Tipo de Bucket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bucket-de-proposito-general-general-purpose-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bucket de Propósito General (General Purpose Bucket)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bucket de Propósito General (General Purpose Bucket)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#casos-de-uso-habituales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Casos de uso habituales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-bucket-s3-express-one-zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory Bucket (S3 Express One Zone)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Directory Bucket (S3 Express One Zone)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Casos de uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-espacio-de-nombres-global-frente-a-regional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Espacio de Nombres: Global frente a Regional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Espacio de Nombres: Global frente a Regional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#espacio-de-nombres-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Espacio de Nombres Global
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Espacio de Nombres Global">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funcionamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implicaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#espacio-de-nombres-regional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Espacio de Nombres Regional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Espacio de Nombres Regional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcionamiento_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funcionamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparativa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparativa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-propiedad-de-objetos-y-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Propiedad de Objetos y ACL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Propiedad de Objetos y ACL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepto-de-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepto de ACL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acl-habilitadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ACL Habilitadas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACL Habilitadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#riesgos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Riesgos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acl-deshabilitadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ACL Deshabilitadas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACL Deshabilitadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ventajas_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bloqueo-de-acceso-publico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Bloqueo de Acceso Público
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Bloqueo de Acceso Público">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-recomendada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración Recomendada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beneficios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beneficios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excepciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Excepciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cifrado-predeterminado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Cifrado Predeterminado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Cifrado Predeterminado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importancia-del-cifrado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importancia del Cifrado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sse-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSE-S3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSE-S3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Características
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casos-de-uso_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Casos de uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sse-kms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSE-KMS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSE-KMS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Características
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casos-de-uso_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Casos de uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consideraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consideraciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas-recomendadas-por-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas Prácticas Recomendadas por AWS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusiones
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-tipo-de-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Tipo de Bucket
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Tipo de Bucket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bucket-de-proposito-general-general-purpose-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bucket de Propósito General (General Purpose Bucket)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bucket de Propósito General (General Purpose Bucket)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#casos-de-uso-habituales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Casos de uso habituales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-bucket-s3-express-one-zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory Bucket (S3 Express One Zone)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Directory Bucket (S3 Express One Zone)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Casos de uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-espacio-de-nombres-global-frente-a-regional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Espacio de Nombres: Global frente a Regional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Espacio de Nombres: Global frente a Regional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#espacio-de-nombres-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Espacio de Nombres Global
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Espacio de Nombres Global">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcionamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funcionamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implicaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implicaciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#espacio-de-nombres-regional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Espacio de Nombres Regional
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Espacio de Nombres Regional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcionamiento_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funcionamiento
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ventajas_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparativa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparativa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparativa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-propiedad-de-objetos-y-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Propiedad de Objetos y ACL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Propiedad de Objetos y ACL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concepto-de-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepto de ACL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acl-habilitadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ACL Habilitadas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACL Habilitadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#riesgos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Riesgos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acl-deshabilitadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ACL Deshabilitadas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACL Deshabilitadas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ventajas_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ventajas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recomendacion_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recomendación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-bloqueo-de-acceso-publico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Bloqueo de Acceso Público
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Bloqueo de Acceso Público">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objetivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-recomendada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuración Recomendada
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beneficios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beneficios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#excepciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Excepciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cifrado-predeterminado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Cifrado Predeterminado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Cifrado Predeterminado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importancia-del-cifrado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importancia del Cifrado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sse-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSE-S3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSE-S3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Características
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casos-de-uso_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Casos de uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sse-kms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSE-KMS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSE-KMS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Características
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#casos-de-uso_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Casos de uso
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consideraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consideraciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas-recomendadas-por-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas Prácticas Recomendadas por AWS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusiones
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="configuracion-inicial-de-un-bucket-amazon-s3-fundamentos-y-buenas-practicas">Configuración Inicial de un Bucket Amazon S3: Fundamentos y Buenas Prácticas</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>Amazon Simple Storage Service (Amazon S3) es un servicio de almacenamiento de objetos diseñado para proporcionar escalabilidad, disponibilidad, seguridad y rendimiento. Durante la creación de un bucket, AWS solicita diversas configuraciones que influyen directamente en aspectos como la latencia, la seguridad, el control de acceso y la protección de los datos.</p>
+<p>Comprender estas opciones resulta esencial para desplegar infraestructuras seguras y alineadas con las recomendaciones actuales de AWS.</p>
+<hr />
+<h2 id="1-tipo-de-bucket">1. Tipo de Bucket</h2>
+<h3 id="bucket-de-proposito-general-general-purpose-bucket">Bucket de Propósito General (General Purpose Bucket)</h3>
+<p>Los buckets de propósito general constituyen la opción estándar de Amazon S3 y son adecuados para la mayoría de los casos de uso empresariales.</p>
+<h4 id="casos-de-uso-habituales">Casos de uso habituales</h4>
+<ul>
+<li>Almacenamiento de archivos corporativos.</li>
+<li>Copias de seguridad.</li>
+<li>Data lakes.</li>
+<li>Aplicaciones web.</li>
+<li>Distribución de contenido estático.</li>
+<li>Almacenamiento de registros (logs).</li>
+</ul>
+<h4 id="ventajas">Ventajas</h4>
+<ul>
+<li>Compatibilidad completa con las funcionalidades de S3.</li>
+<li>Integración con servicios como AWS Lambda, AWS Glue, Amazon Athena y Amazon CloudFront.</li>
+<li>Replicación automática entre múltiples Availability Zones dentro de una región.</li>
+<li>Alta durabilidad y disponibilidad.</li>
+</ul>
+<h4 id="recomendacion">Recomendación</h4>
+<p>AWS recomienda utilizar este tipo de bucket en la mayoría de escenarios debido a su elevada compatibilidad y madurez tecnológica.</p>
+<hr />
+<h3 id="directory-bucket-s3-express-one-zone">Directory Bucket (S3 Express One Zone)</h3>
+<p>Los Directory Buckets forman parte de la tecnología S3 Express One Zone y están diseñados para cargas de trabajo que requieren latencias extremadamente bajas.</p>
+<h4 id="casos-de-uso">Casos de uso</h4>
+<ul>
+<li>Entrenamiento de modelos de Inteligencia Artificial.</li>
+<li>Procesamiento masivo de datos.</li>
+<li>Computación de alto rendimiento (HPC).</li>
+<li>Aplicaciones sensibles a la latencia.</li>
+</ul>
+<h4 id="ventajas_1">Ventajas</h4>
+<ul>
+<li>Menor latencia de acceso.</li>
+<li>Mayor rendimiento por operación.</li>
+<li>Optimización para cargas intensivas de lectura y escritura.</li>
+</ul>
+<h4 id="limitaciones">Limitaciones</h4>
+<ul>
+<li>Disponibilidad restringida a una única Availability Zone.</li>
+<li>Compatibilidad reducida con algunas características tradicionales de S3.</li>
+<li>Mayor complejidad de administración.</li>
+</ul>
+<h4 id="recomendacion_1">Recomendación</h4>
+<p>Solo debe seleccionarse cuando existan requisitos específicos de rendimiento que justifiquen su utilización.</p>
+<hr />
+<h2 id="2-espacio-de-nombres-global-frente-a-regional">2. Espacio de Nombres: Global frente a Regional</h2>
+<p>Durante la creación de un bucket de propósito general, AWS permite seleccionar el comportamiento asociado al espacio de nombres.</p>
+<h3 id="espacio-de-nombres-global">Espacio de Nombres Global</h3>
+<p>Históricamente, Amazon S3 utilizaba un sistema de resolución global.</p>
+<h4 id="funcionamiento">Funcionamiento</h4>
+<p>Cuando un cliente realiza una solicitud al endpoint global:</p>
+<pre><code class="language-text">mi-bucket.s3.amazonaws.com
+</code></pre>
+<p>AWS debe determinar internamente la región donde se encuentra almacenado el bucket antes de procesar la petición.</p>
+<h4 id="implicaciones">Implicaciones</h4>
+<ul>
+<li>Se introduce una resolución adicional.</li>
+<li>Puede existir una redirección interna.</li>
+<li>Incrementa ligeramente la latencia de acceso.</li>
+</ul>
+<hr />
+<h3 id="espacio-de-nombres-regional">Espacio de Nombres Regional</h3>
+<p>En este modelo, el endpoint incluye explícitamente la región donde reside el bucket.</p>
+<h4 id="ejemplo">Ejemplo</h4>
+<pre><code class="language-text">mi-bucket.s3.eu-west-1.amazonaws.com
+</code></pre>
+<h4 id="funcionamiento_1">Funcionamiento</h4>
+<p>La solicitud llega directamente a la región correspondiente sin necesidad de realizar comprobaciones adicionales.</p>
+<h4 id="ventajas_2">Ventajas</h4>
+<ul>
+<li>Menor latencia.</li>
+<li>Menos saltos de red.</li>
+<li>Menor probabilidad de redirección.</li>
+<li>Mejor alineación con arquitecturas modernas.</li>
+</ul>
+<h3 id="comparativa">Comparativa</h3>
+<p><img alt="image" src="img/s3-global-regional.png" /></p>
+<h4 id="recomendacion_2">Recomendación</h4>
+<p>AWS recomienda utilizar el espacio de nombres regional para nuevas implementaciones debido a sus beneficios operativos y de rendimiento.</p>
+<hr />
+<h2 id="3-propiedad-de-objetos-y-acl">3. Propiedad de Objetos y ACL</h2>
+<h3 id="concepto-de-acl">Concepto de ACL</h3>
+<p>Las Access Control Lists (ACL) constituyen un mecanismo tradicional para gestionar permisos sobre objetos y buckets.</p>
+<p>Permiten definir permisos de lectura y escritura directamente sobre los recursos almacenados.</p>
+<hr />
+<h3 id="acl-habilitadas">ACL Habilitadas</h3>
+<p>Cuando las ACL están activadas:</p>
+<ul>
+<li>Los objetos pueden tener propietarios distintos.</li>
+<li>Los permisos pueden administrarse mediante ACL además de IAM.</li>
+<li>Se incrementa la complejidad administrativa.</li>
+</ul>
+<h4 id="riesgos">Riesgos</h4>
+<ul>
+<li>Configuraciones inconsistentes.</li>
+<li>Mayor dificultad de auditoría.</li>
+<li>Posibles exposiciones involuntarias.</li>
+</ul>
+<hr />
+<h3 id="acl-deshabilitadas">ACL Deshabilitadas</h3>
+<p>Cuando las ACL se deshabilitan:</p>
+<ul>
+<li>El bucket se convierte en propietario de todos los objetos almacenados.</li>
+<li>Los permisos se gestionan exclusivamente mediante políticas IAM y políticas de bucket.</li>
+</ul>
+<h4 id="ventajas_3">Ventajas</h4>
+<ul>
+<li>Administración más sencilla.</li>
+<li>Modelo de seguridad unificado.</li>
+<li>Menor probabilidad de errores de configuración.</li>
+</ul>
+<h4 id="recomendacion_3">Recomendación</h4>
+<p>AWS recomienda mantener las ACL deshabilitadas en la mayoría de los entornos modernos.</p>
+<hr />
+<h2 id="4-bloqueo-de-acceso-publico">4. Bloqueo de Acceso Público</h2>
+<h3 id="objetivo">Objetivo</h3>
+<p>El bloqueo de acceso público evita que usuarios o aplicaciones expongan datos accidentalmente a Internet.</p>
+<p>Constituye una de las medidas de seguridad más importantes disponibles en Amazon S3.</p>
+<hr />
+<h3 id="configuracion-recomendada">Configuración Recomendada</h3>
+<p>La configuración predeterminada consiste en habilitar las cuatro opciones de protección:</p>
+<ul>
+<li>Bloquear ACL públicas nuevas.</li>
+<li>Bloquear ACL públicas existentes.</li>
+<li>Bloquear políticas públicas del bucket.</li>
+<li>Restringir el acceso público a buckets y objetos.</li>
+</ul>
+<hr />
+<h3 id="beneficios">Beneficios</h3>
+<ul>
+<li>Prevención de fugas de información.</li>
+<li>Protección frente a errores humanos.</li>
+<li>Cumplimiento de buenas prácticas de seguridad.</li>
+</ul>
+<hr />
+<h3 id="excepciones">Excepciones</h3>
+<p>Puede ser necesario desactivar parcialmente estas restricciones cuando:</p>
+<ul>
+<li>Se aloja una página web estática.</li>
+<li>Se distribuyen recursos públicos.</li>
+<li>Se publican ficheros accesibles desde Internet.</li>
+</ul>
+<p>En estos casos, la exposición pública debe realizarse de forma controlada y documentada.</p>
+<hr />
+<h2 id="5-cifrado-predeterminado">5. Cifrado Predeterminado</h2>
+<h3 id="importancia-del-cifrado">Importancia del Cifrado</h3>
+<p>El cifrado protege la confidencialidad de los datos almacenados y ayuda a cumplir requisitos normativos y de gobierno corporativo.</p>
+<p>Amazon S3 permite cifrar automáticamente todos los objetos almacenados en un bucket.</p>
+<hr />
+<h3 id="sse-s3">SSE-S3</h3>
+<p>Server-Side Encryption with Amazon S3 Managed Keys.</p>
+<h4 id="caracteristicas">Características</h4>
+<ul>
+<li>Gestión automática de claves por parte de AWS.</li>
+<li>Sin necesidad de configuración adicional.</li>
+<li>Sin costes extra asociados a la gestión de claves.</li>
+</ul>
+<h4 id="casos-de-uso_1">Casos de uso</h4>
+<ul>
+<li>Aplicaciones empresariales estándar.</li>
+<li>Almacenamiento general.</li>
+<li>Copias de seguridad.</li>
+</ul>
+<hr />
+<h3 id="sse-kms">SSE-KMS</h3>
+<p>Server-Side Encryption with AWS Key Management Service.</p>
+<h4 id="caracteristicas_1">Características</h4>
+<ul>
+<li>Utilización de claves gestionadas mediante AWS KMS.</li>
+<li>Control detallado sobre permisos y rotación.</li>
+<li>Integración con auditoría y registros de acceso.</li>
+</ul>
+<h4 id="casos-de-uso_2">Casos de uso</h4>
+<ul>
+<li>Entornos regulados.</li>
+<li>Organizaciones con requisitos de cumplimiento.</li>
+<li>Necesidad de control granular sobre las claves criptográficas.</li>
+</ul>
+<h4 id="consideraciones">Consideraciones</h4>
+<ul>
+<li>Puede generar costes adicionales.</li>
+<li>Requiere una gestión más avanzada.</li>
+</ul>
+<hr />
+<h2 id="buenas-practicas-recomendadas-por-aws">Buenas Prácticas Recomendadas por AWS</h2>
+<p>Para la mayoría de despliegues empresariales, la configuración recomendada es:</p>
+<table>
+<thead>
+<tr>
+<th>Configuración</th>
+<th>Valor recomendado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo de bucket</td>
+<td>General Purpose Bucket</td>
+</tr>
+<tr>
+<td>Espacio de nombres</td>
+<td>Regional</td>
+</tr>
+<tr>
+<td>ACL</td>
+<td>Deshabilitadas</td>
+</tr>
+<tr>
+<td>Bloqueo de acceso público</td>
+<td>Habilitado</td>
+</tr>
+<tr>
+<td>Cifrado predeterminado</td>
+<td>SSE-S3 o SSE-KMS según requisitos</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="conclusiones">Conclusiones</h2>
+<p>La configuración inicial de un bucket Amazon S3 tiene un impacto directo sobre la seguridad, el rendimiento y la gobernanza de los datos. Para la mayoría de organizaciones, una arquitectura alineada con las recomendaciones actuales de AWS consiste en utilizar un bucket de propósito general, espacio de nombres regional, ACL deshabilitadas, bloqueo de acceso público activo y cifrado habilitado por defecto.</p>
+<p>Esta combinación proporciona un equilibrio óptimo entre simplicidad operativa</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
